@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include, url
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,5 +26,6 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 #Add Django site authentication urls (for login, logout, password management)
     path('accounts/', include('django.contrib.auth.urls')),
+    # url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
